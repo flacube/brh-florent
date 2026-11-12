@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRH Florent — N° 0 (édition test)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0d1b3e; --blue:#1f3a8a; --blue-soft:#e8ecf7;
+    --red:#c8102e; --red-soft:#fbe9ec;
+    --amber:#b45309; --amber-soft:#fdf2e3;
+    --green:#1d6b47; --green-soft:#e6f2ec;
+    --ink:#1b1f2a; --muted:#5b6170; --line:#dcdfe6;
+    --bg:#f5f5f2; --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
+  a{color:var(--blue)}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.8rem;letter-spacing:.02em}
+
+  /* Bandeau */
+  header.mast{background:var(--navy);color:#fff;border-bottom:4px solid var(--red)}
+  .mast-in{max-width:1180px;margin:0 auto;padding:28px 24px 22px}
+  .kicker{display:flex;gap:10px;align-items:center;color:#c9d2ea;text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;font-weight:700}
+  .kicker .dot{width:8px;height:8px;background:var(--red);border-radius:50%}
+  h1{margin:8px 0 4px;font-size:2.4rem;line-height:1.1;font-weight:800;letter-spacing:-.01em}
+  .sub{color:#c9d2ea;margin:0;font-size:1.05rem}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;color:#e6eaf5}
+  .meta span b{color:#fff}
+  .test{display:inline-block;background:var(--red);color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+
+  /* Mise en page */
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 24px 60px;display:grid;grid-template-columns:220px 1fr;gap:36px}
+  nav.toc{position:sticky;top:20px;align-self:start;font-size:.92rem}
+  nav.toc p{margin:0 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:700}
+  nav.toc a{display:block;padding:6px 10px;border-left:3px solid var(--line);color:var(--ink);text-decoration:none}
+  nav.toc a:hover{border-left-color:var(--red);background:#fff}
+  main{min-width:0}
+
+  section{margin-bottom:38px}
+  h2{display:flex;align-items:baseline;gap:12px;font-size:1.35rem;margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--navy)}
+  h2 .n{font-family:"IBM Plex Mono",monospace;color:var(--red);font-size:1rem}
+  h3.zone{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:22px 0 10px}
+
+  /* Synthèse */
+  .synth{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--navy);padding:18px 22px;border-radius:4px}
+  .synth ul{margin:0;padding-left:18px}
+  .synth li{margin:6px 0}
+
+  .alert{margin-top:16px;background:var(--amber-soft);border:1px solid #f1d3a8;border-left:6px solid var(--amber);padding:14px 20px;border-radius:4px}
+  .alert strong{color:var(--amber)}
+  .alert ul{margin:8px 0 0;padding-left:18px}
+
+  /* Fiches */
+  .item{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 20px;margin-bottom:12px}
+  .item h4{margin:0 0 4px;font-size:1.08rem;line-height:1.3}
+  .item .when{color:var(--muted);font-size:.88rem;margin-bottom:8px}
+  .item p{margin:6px 0}
+  .item .cdc{margin-top:10px;padding:8px 12px;background:var(--blue-soft);border-radius:3px;font-size:.95rem}
+  .item .cdc b{color:var(--blue)}
+  .item .src{margin-top:8px;font-size:.85rem;color:var(--muted)}
+  .item .src a{margin-right:10px}
+
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+  .tag{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;border-radius:3px;border:1px solid transparent}
+  .p-haute{background:var(--red-soft);color:var(--red);border-color:#f2c3cb}
+  .p-moy{background:var(--amber-soft);color:var(--amber);border-color:#f1d3a8}
+  .p-info{background:#eef0f4;color:var(--muted);border-color:var(--line)}
+  .n-applicable{background:var(--green-soft);color:var(--green)}
+  .n-projet{background:var(--blue-soft);color:var(--blue)}
+  .n-verif{background:#fff;color:var(--amber);border-color:#f1d3a8}
+  .n-presse{background:#fff;color:var(--muted);border-color:var(--line)}
+
+  /* Monde compact */
+  .brief{display:grid;grid-template-columns:150px 1fr;gap:4px 16px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 20px;margin-bottom:10px}
+  .brief .pays{font-weight:800;color:var(--navy)}
+  .brief .pays small{display:block;font-weight:400;color:var(--muted)}
+  .brief p{margin:0}
+  .brief .src{grid-column:2;font-size:.85rem;color:var(--muted)}
+
+  .watch li{margin:8px 0}
+  .limits{font-size:.95rem;color:var(--muted)}
+  .limits ul{padding-left:18px}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  footer .in{max-width:1180px;margin:0 auto;padding:18px 24px 40px}
+
+  @media (max-width:860px){
+    .wrap{grid-template-columns:1fr;gap:10px}
+    nav.toc{position:static;display:flex;flex-wrap:wrap;gap:6px}
+    nav.toc p{width:100%}
+    nav.toc a{border:1px solid var(--line);border-radius:3px;background:#fff;padding:4px 8px}
+    h1{font-size:1.9rem}
+    .brief{grid-template-columns:1fr}
+    .brief .src{grid-column:1}
+  }
+  @media print{
+    nav.toc{display:none} .wrap{grid-template-columns:1fr}
+    header.mast{background:#fff;color:var(--ink)} .sub,.meta,.kicker{color:var(--ink)}
+    .item,.brief{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="kicker"><span class="dot"></span>Veille hebdomadaire · Sécurité civile</div>
+    <h1>BRH Florent</h1>
+    <p class="sub">Bulletin de renseignements hebdomadaire à l'usage du chef de centre — CIS Castelnau-de-Médoc · Sainte-Hélène · Salaunes</p>
+    <div class="meta">
+      <span class="test">N° 0 · Édition test</span>
+      <span>Période : <b>2 au 11 novembre 2026</b></span>
+      <span>Rédigé le : <b>jeudi 12 novembre 2026</b></span>
+      <span>Lecture : <b>≈ 12 min</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc" aria-label="Sommaire">
+    <p>Sommaire</p>
+    <a href="#synthese">Synthèse</a>
+    <a href="#actu">1 · Actualité</a>
+    <a href="#juridique">2 · Juridique &amp; Parlement</a>
+    <a href="#rh">3 · RH &amp; dialogue social</a>
+    <a href="#doctrine">4 · Doctrine &amp; formation</a>
+    <a href="#surveiller">5 · À surveiller</a>
+    <a href="#sources">6 · Sources &amp; limites</a>
+  </nav>
+
+  <main>
+
+    <!-- SYNTHÈSE -->
+    <section id="synthese">
+      <h2><span class="n">00</span>Synthèse de la semaine</h2>
+      <div class="synth">
+        <ul>
+          <li><b>Climat social tendu</b> : le préavis national de l'intersyndicale court jusqu'au 4 décembre. Le Nord sort de la grève après un accord local sur les gardes de 24 h.</li>
+          <li><b>Violences</b> : un adjudant-chef a été grièvement blessé par balle le 1er novembre sur un feu de véhicule près de Marseille. Une première par son intensité.</li>
+          <li><b>Parlement</b> : la proposition de loi sur la réserve communale de sécurité civile a été adoptée et modifiée par le Sénat le 5 novembre. Elle repart à l'Assemblée.</li>
+          <li><b>Budget</b> : la commission des finances du Sénat a examiné le programme 161 du PLF 2027 (≈ 2,1 Md€ en AE). Elle constate l'absence de réforme du financement.</li>
+          <li><b>International</b> : naufrage meurtrier au Sénégal (44 morts provisoires), séisme modéré au Japon, effondrement d'immeuble à Brooklyn.</li>
+        </ul>
+      </div>
+      <div class="alert">
+        <strong>Actions sous 30 jours</strong> — aucune mise en conformité réglementaire obligatoire n'a été identifiée cette semaine. Deux points méritent toutefois une action de votre part :
+        <ul>
+          <li>Vérifier le contenu du décret n° 2026-1026 sur les maladies professionnelles (voir 2.3) avant de communiquer quoi que ce soit aux agents.</li>
+          <li>Préavis national en cours jusqu'au 4 décembre : s'assurer que les consignes du SDIS sur la continuité de service sont connues de vos adjoints.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ACTUALITÉ -->
+    <section id="actu">
+      <h2><span class="n">01</span>Actualité sécurité civile</h2>
+
+      <h3 class="zone">France</h3>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-haute">Priorité haute</span><span class="tag n-presse">Presse</span></div>
+        <h4>Les Pennes-Mirabeau (13) : un sapeur-pompier grièvement blessé par balle en intervention</h4>
+        <div class="when">Dimanche 1er novembre · suites jusqu'au 9 novembre</div>
+        <p>Un adjudant-chef professionnel du SDIS 13, qui commandait le dispositif sur un feu de véhicules dans la zone commerciale de Plan-de-Campagne, a été visé par plusieurs tirs. L'auteur, interpellé rapidement, a été placé en garde à vue pour tentatives d'homicide sur une personne chargée d'une mission de service public. Selon les dernières nouvelles, l'état du blessé s'améliore.</p>
+        <div class="cdc"><b>Pour le chef de centre :</b> l'occasion de rappeler à vos équipes la conduite à tenir sur les feux de véhicules en contexte hostile (lecture de l'environnement, attente des forces de l'ordre, repli). Le plan national de prévention des violences envers les sapeurs-pompiers date du 13 février 2026.</div>
+        <div class="src">Sources : <a href="https://www.lagazettefrance.fr/article/un-pompier-grievement-blesse-par-balle-pres-de-marseille-un-homme-interpelle">La Gazette France</a><a href="https://www.sudradio.fr/societe/rassemblements-en-soutien-au-pompier-blesse-par-balle-dont-letat-sameliore">Sud Radio</a><a href="https://www.secoursmag.fr/2026/11/09/sapeurs-pompiers-les-violences-montent-dun-cran-avec-un-blesse-par-balle/">Secours Mag</a></div>
+      </article>
+
+      <h3 class="zone">Europe</h3>
+
+      <div class="brief">
+        <div class="pays">Italie<small>3 novembre</small></div>
+        <p>Fortes pluies et orages dans les Abruzzes, le Molise, les Pouilles, la Calabre et la Campanie. À Trieste, la bora a soufflé jusqu'à 100 km/h et provoqué des dizaines d'interventions des pompiers.</p>
+        <div class="src"><a href="https://www.catnat.net/veille-catastrophes-naturelles/veille-des-catastrophes-naturelles/archive-des-catastrophes/218-inondations-monde">CatNat</a></div>
+      </div>
+      <div class="brief">
+        <div class="pays">Bulgarie<small>3 novembre</small></div>
+        <p>Inondations à Shabla, dans le nord-est du pays : cours et maisons de la ville basse submergées après de fortes pluies.</p>
+        <div class="src"><a href="https://www.catnat.net/veille-catastrophes-naturelles/veille-des-catastrophes-naturelles/archive-des-catastrophes/218-inondations-monde">CatNat</a></div>
+      </div>
+      <div class="brief">
+        <div class="pays">Portugal<small>11 novembre</small></div>
+        <p>Tempête Charles : la protection civile (ANEPC) a enregistré une soixantaine d'interventions en six heures, surtout pour des inondations, autour de Lisbonne et de Setúbal. La dépression gagne le sud-est de la France le 12 novembre.</p>
+        <div class="src"><a href="https://catnat.net/veille-catastrophes-naturelles/veille-des-catastrophes-naturelles/archive-des-catastrophes/224-tempetes-monde/38537-la-tempete-charles-touche-madeire-la-peninsule-iberique-la-france-et-litalie">CatNat</a></div>
+      </div>
+
+      <h3 class="zone">Monde</h3>
+
+      <div class="brief">
+        <div class="pays">Sénégal<small>6 – 11 novembre</small></div>
+        <p>Naufrage d'une pirogue de migrants au large de Lompoul (Kébémer). Le bilan provisoire est de 44 morts et un seul rescapé, et les recherches se poursuivent le long de la côte. Le plan Orsec a été déclenché, avec un protocole d'identification par photographies pour les familles.</p>
+        <div class="src"><a href="https://www.pulse.sn/article/naufrage-a-loumpoul-5-nouveaux-corps-11-cadavres-sous-x-un-protocole-photos-active-et-44-morts-2026111210135314163">Pulse.sn</a><a href="https://lesoleil.sn/actualites/societe-fait-divers/naufrage-au-large-de-lompoul-le-bilan-salourdit-a-39-morts/">Le Soleil</a></div>
+      </div>
+      <div class="brief">
+        <div class="pays">Japon<small>8 novembre</small></div>
+        <p>Séisme de magnitude 5,7 dans l'ouest de la préfecture de Shizuoka : une vingtaine de blessés, des dégâts matériels et des Shinkansen perturbés. Les autorités ont appelé à une semaine de vigilance.</p>
+        <div class="src"><a href="https://www.franceinfo.fr/monde/japon/un-seisme-de-magnitude-5-7-dans-le-centre-du-japon-fait-plusieurs-blesses_8274590.html">franceinfo</a></div>
+      </div>
+      <div class="brief">
+        <div class="pays">États-Unis<small>11 novembre</small></div>
+        <p>Effondrement d'un immeuble de trois étages à Brooklyn (New York) : au moins 2 morts et 17 blessés selon un bilan provisoire. Les recherches dans les décombres se poursuivent.</p>
+        <div class="src"><a href="https://www.derniereheureqc.com/divertissement/vedette/terrible-drame-a-new-york-un-immeuble-s-effondre-et-fait-plusieurs-victimes">Dernière Heure QC</a> · <span class="tag n-verif">Source secondaire, à confirmer</span></div>
+      </div>
+    </section>
+
+    <!-- JURIDIQUE -->
+    <section id="juridique">
+      <h2><span class="n">02</span>Veille juridique &amp; parlementaire</h2>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-moy">Priorité moyenne</span><span class="tag n-projet">En navette</span></div>
+        <h4>2.1 · Proposition de loi visant à valoriser la réserve communale de sécurité civile</h4>
+        <div class="when">Adoptée avec modifications par le Sénat le 5 novembre · retour à l'Assemblée (texte n° 3442, 9 novembre)</div>
+        <p>Le texte assouplit la mobilisation des réservistes par le maire et renforce la protection des agents publics engagés dans une réserve communale ou dans la réserve citoyenne d'un SIS. Le Sénat a rejeté les amendements qui visaient à rétablir l'article 3 sur la valorisation des compétences des lycéens. Au 5 août 2026, 958 communes disposaient d'une réserve communale.</p>
+        <div class="cdc"><b>Pour le chef de centre :</b> le texte est directement lié à vos travaux sur les PCS. Il serait utile de recenser les communes de votre secteur qui disposent d'une réserve et de voir comment elles s'articulent avec le CIS. Le texte n'est pas encore applicable.</div>
+        <div class="src">Sources : <a href="https://www.senat.fr/leg/tas26-029.html">Texte adopté par le Sénat</a><a href="https://www.senat.fr/dossier-legislatif/ppl24-515.html">Dossier législatif</a><a href="https://www.senat.fr/rap/l26-120/l26-1201.pdf">Rapport de la commission des lois</a></div>
+      </article>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-info">Information</span><span class="tag n-projet">Projet budgétaire</span></div>
+        <h4>2.2 · PLF 2027 — programme 161 « Sécurité civile »</h4>
+        <div class="when">Examen en commission des finances du Sénat le 4 novembre</div>
+        <p>La dotation atteint près de 2,1 Md€ en autorisations d'engagement et 1,1 Md€ en crédits de paiement. Le rapporteur spécial y voit un « rendez-vous manqué » pour la réforme du financement de la sécurité civile, tout en soutenant le renforcement des moyens nationaux.</p>
+        <div class="src">Source : <a href="https://www.senat.fr/fileadmin/cru-1792598966/Commissions/Finances/2026-2027/PLF_2027/NP/NP_PLF_2027_Securite_civile.pdf">Note de présentation, commission des finances du Sénat</a></div>
+      </article>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-moy">À vérifier</span><span class="tag n-applicable">Texte publié</span></div>
+        <h4>2.3 · Décret n° 2026-1026 du 3 novembre 2026 révisant les tableaux des maladies professionnelles</h4>
+        <div class="when">JO n° 0259 du 5 novembre 2026</div>
+        <p>Le décret révise et complète les tableaux annexés au code de la sécurité sociale. Le sommaire du JO ne précise pas quels tableaux sont concernés, et je n'ai pas pu lire le texte lui-même.</p>
+        <div class="cdc"><b>Pour le chef de centre :</b> à vérifier en priorité. Les tableaux du régime général servent de référence pour la reconnaissance des maladies professionnelles des fonctionnaires territoriaux, donc un effet indirect sur les SPP est possible. Cela compte notamment pour le dossier fumées-cancers.</div>
+        <div class="src">Source : <a href="https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259">Légifrance — sommaire du JO du 5 novembre</a></div>
+      </article>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-info">À lire</span><span class="tag n-presse">Presse spécialisée</span></div>
+        <h4>2.4 · Deux articles de La Gazette des communes à consulter</h4>
+        <div class="when">4 et 6 novembre</div>
+        <p>Un décryptage du contentieux sur les gardes de 24 heures (4 novembre). Une réponse ministérielle sur la forte hausse des tarifs d'assurance subie par les SPP (6 novembre). Je n'ai eu accès qu'aux titres, pas au contenu.</p>
+        <div class="src">Source : <a href="https://www.lagazettedescommunes.com/club-prevention-securite/securite-civile/sapeurs-pompiers-et-sdis/">La Gazette des communes — rubrique SDIS</a></div>
+      </article>
+    </section>
+
+    <!-- RH -->
+    <section id="rh">
+      <h2><span class="n">03</span>RH, dialogue social &amp; volontariat</h2>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-moy">Priorité moyenne</span><span class="tag n-presse">Syndicats</span></div>
+        <h4>Préavis de grève national reconduit jusqu'au 4 décembre</h4>
+        <div class="when">Du 21 octobre au 4 décembre 2026 · journée forte le 3 novembre</div>
+        <p>Les huit organisations de l'intersyndicale maintiennent leurs revendications : financement pérenne des SIS, recrutements statutaires, santé et sécurité des personnels. À l'échelle de la fonction publique territoriale, d'autres préavis couvrent tout le mois de novembre.</p>
+        <div class="src">Sources : <a href="https://sudsdis-national.net/2026/10/18/la-mobilisation-continue-la-greve-est-reconduite-jusquau-4-decembre-avec-un-bonus-le-3-novembre/">SUD SDIS national</a></div>
+      </article>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-info">Information</span><span class="tag n-presse">Presse</span></div>
+        <h4>Nord : fin de la grève après des avancées sur les gardes de 24 h</h4>
+        <div class="when">Mardi 10 novembre · AG à Lille-Bouvines</div>
+        <p>D'ici trois à quatre ans, le nombre annuel de gardes de 24 heures passera de 92 à 86. Des avancées ont aussi été obtenues sur la surveillance de la santé et le dossier fumées-cancers. C'est un repère utile pour les discussions en cours dans d'autres SDIS.</p>
+        <div class="src">Source : <a href="https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/moins-de-gardes-et-de-meilleures-protections-en-interventions-les-pompiers-du-nord-mettent-fin-a-la-greve-3447264.html">France 3 Hauts-de-France</a></div>
+      </article>
+    </section>
+
+    <!-- DOCTRINE -->
+    <section id="doctrine">
+      <h2><span class="n">04</span>Doctrine, formation &amp; RETEX</h2>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-info">Information</span><span class="tag n-applicable">Source officielle</span></div>
+        <h4>ENSOSP : trois publications de la semaine</h4>
+        <div class="when">4 – 6 novembre</div>
+        <p>« Du terrain au tribunal : mieux se connaître pour mieux décider » (6 novembre), sur les relations entre acteurs du secours et de la justice. Une formation aux risques radiologiques suivie par une délégation de sapeurs-pompiers slovènes (6 novembre). Une réflexion sur l'intelligence artificielle dans la fonction publique (4 novembre).</p>
+        <div class="src">Source : <a href="https://www.ensosp.fr/">ENSOSP — actualités</a></div>
+      </article>
+
+      <p class="limits">Domaines sans évolution significative repérée cette semaine : SSUAP, secours routier, NRBC, NexSIS, transmissions.</p>
+    </section>
+
+    <!-- À SURVEILLER -->
+    <section id="surveiller">
+      <h2><span class="n">05</span>Points à surveiller</h2>
+      <ul class="watch">
+        <li><b>Tempête Charles</b> — dans le sud-est de la France à partir du 12 novembre, avec un risque de crues. À suivre pour d'éventuelles colonnes de renfort.</li>
+        <li><b>Réserve communale</b> — deuxième lecture à l'Assemblée ou commission mixte paritaire, puisque la procédure accélérée est engagée.</li>
+        <li><b>Projet de loi de modernisation de la sécurité civile</b> — toujours annoncé. Une question écrite récente indique qu'il n'est pas encore déposé (à confirmer).</li>
+        <li><b>PLF 2027</b> — examen en séance du programme 161 au Sénat.</li>
+        <li><b>Fin du préavis national</b> — 4 décembre.</li>
+      </ul>
+    </section>
+
+    <!-- SOURCES -->
+    <section id="sources">
+      <h2><span class="n">06</span>Sources &amp; limites</h2>
+      <div class="limits">
+        <ul>
+          <li>Édition test : la période couvre exceptionnellement du 2 au 11 novembre. Les éditions régulières couvriront la semaine civile écoulée.</li>
+          <li>Le PNRS n'a pas été consulté : son contenu complet demande une connexion.</li>
+          <li>Les articles de La Gazette des communes et le texte du décret n° 2026-1026 n'ont pas pu être lus en entier.</li>
+          <li>Les bilans humains des événements internationaux sont provisoires.</li>
+          <li>Sources principales : Légifrance, Sénat, Assemblée nationale, ENSOSP, CatNat, presse nationale et régionale.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="in"><a href="../archives.html">Éditions précédentes</a> · BRH Florent — document de veille personnel, sans caractère officiel. Il ne remplace pas la consultation des sources citées.</div>
+</footer>
+
+</body>
+</html>

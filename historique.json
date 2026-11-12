@@ -1,0 +1,36 @@
+{
+  "description": "Mémoire de la veille BRH Florent : informations déjà signalées, relues avant chaque édition pour éviter les doublons.",
+  "editions": [
+    {
+      "numero": 0,
+      "fichier": "editions/brh-000.html",
+      "periode": "2026-11-02/2026-11-11",
+      "publiee": "2026-11-12",
+      "items": [
+        "Pennes-Mirabeau (13) : SP blessé par balle en intervention, 1er nov. 2026",
+        "Italie : intempéries Abruzzes/Molise/Pouilles/Calabre/Campanie, 3 nov.",
+        "Bulgarie : inondations à Shabla, 3 nov.",
+        "Portugal : tempête Charles, 11 nov.",
+        "Sénégal : naufrage pirogue Lompoul, 44 morts provisoires au 11 nov.",
+        "Japon : séisme M5,7 Shizuoka, 8 nov.",
+        "États-Unis : effondrement immeuble Brooklyn, 11 nov. (source à confirmer)",
+        "PPL réserve communale de sécurité civile : adoptée modifiée Sénat 5 nov., retour AN n°3442",
+        "PLF 2027 P161 : commission des finances du Sénat 4 nov.",
+        "Décret n°2026-1026 du 3 nov. 2026 maladies professionnelles (contenu à vérifier)",
+        "Gazette des communes : décryptage gardes 24h (4 nov.), RM assurances SPP (6 nov.)",
+        "Préavis national intersyndicale 21 oct.-4 déc. 2026",
+        "Nord : fin de grève 10 nov., 86 gardes 24h au lieu de 92",
+        "ENSOSP : publications 4-6 nov. (terrain/tribunal, délégation slovène radiologique, IA)"
+      ],
+      "a_suivre": [
+        "Tempête Charles sud-est France",
+        "PPL réserve communale : 2e lecture AN ou CMP",
+        "Projet de loi de modernisation de la sécurité civile : dépôt",
+        "PLF 2027 P161 : séance publique Sénat",
+        "Fin du préavis national le 4 déc.",
+        "Brooklyn : bilan définitif",
+        "Décret 2026-1026 : tableaux concernés"
+      ]
+    }
+  ]
+}
