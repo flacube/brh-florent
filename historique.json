@@ -31,6 +31,35 @@
         "Brooklyn : bilan définitif",
         "Décret 2026-1026 : tableaux concernés"
       ]
+    },
+    {
+      "numero": 1,
+      "fichier": "editions/brh-001.html",
+      "periode": "2026-11-09/2026-11-15",
+      "publiee": "2026-11-16",
+      "items": [
+        "Hérault/Gard : inondations éclair nuit 14-15 nov., 190 mm Montpellier, ~105 mises en sécurité",
+        "Tempête Charles : mise à jour, passage modéré en France le 12 nov. (bilan non lu)",
+        "Ukraine : aide d'urgence UCPM préparée 9-10 nov.",
+        "Bulgarie ouest : tempête (titre CatNat seul)",
+        "Argentine : grêle et tornade 13-14 nov., sans victime",
+        "USA : tornades New Jersey/Delaware 12-13 nov.",
+        "Parlement européen : position UCPM 2028-2034, 12,42 Md€, vote 12 nov.",
+        "Sénat PLFSS 2027 9 nov. : SDIS cités sur hausse CNRACL (à vérifier)",
+        "CGT SDIS : RDV Beauvau 12 nov. non tenu, dépôt des casques 4 déc.",
+        "Ouest-France : Deux-Sèvres dépôt des casques ; Calvados fragilité financière 2027 (titres seuls)"
+      ],
+      "a_suivre": [
+        "Fin du préavis national et dépôt des casques le 4 déc.",
+        "UCPM 2028-2034 : négociations PE-Conseil",
+        "Note tutelle après CE 9 juillet 2026 (SPV)",
+        "Projet de loi de modernisation de la sécurité civile (« MOSC 2 ») : dépôt",
+        "PPL réserve communale : 2e lecture AN ou CMP",
+        "PLF 2027 P161 : séance publique Sénat",
+        "Décret 2026-1026 : tableaux concernés",
+        "Hérault/Gard : bilan consolidé et CatNat",
+        "JORF 10-15 nov. non consultés : contrôle rétroactif"
+      ]
     }
   ]
 }

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRH Florent — N° 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0d1b3e; --blue:#1f3a8a; --blue-soft:#e8ecf7;
+    --red:#c8102e; --red-soft:#fbe9ec;
+    --amber:#b45309; --amber-soft:#fdf2e3;
+    --green:#1d6b47; --green-soft:#e6f2ec;
+    --ink:#1b1f2a; --muted:#5b6170; --line:#dcdfe6;
+    --bg:#f5f5f2; --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
+  a{color:var(--blue)}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.8rem;letter-spacing:.02em}
+
+  /* Bandeau */
+  header.mast{background:var(--navy);color:#fff;border-bottom:4px solid var(--red)}
+  .mast-in{max-width:1180px;margin:0 auto;padding:28px 24px 22px}
+  .kicker{display:flex;gap:10px;align-items:center;color:#c9d2ea;text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;font-weight:700}
+  .kicker .dot{width:8px;height:8px;background:var(--red);border-radius:50%}
+  h1{margin:8px 0 4px;font-size:2.4rem;line-height:1.1;font-weight:800;letter-spacing:-.01em}
+  .sub{color:#c9d2ea;margin:0;font-size:1.05rem}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;color:#e6eaf5}
+  .meta span b{color:#fff}
+  .test{display:inline-block;background:var(--red);color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+
+  /* Mise en page */
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 24px 60px;display:grid;grid-template-columns:220px 1fr;gap:36px}
+  nav.toc{position:sticky;top:20px;align-self:start;font-size:.92rem}
+  nav.toc p{margin:0 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:700}
+  nav.toc a{display:block;padding:6px 10px;border-left:3px solid var(--line);color:var(--ink);text-decoration:none}
+  nav.toc a:hover{border-left-color:var(--red);background:#fff}
+  main{min-width:0}
+
+  section{margin-bottom:38px}
+  h2{display:flex;align-items:baseline;gap:12px;font-size:1.35rem;margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--navy)}
+  h2 .n{font-family:"IBM Plex Mono",monospace;color:var(--red);font-size:1rem}
+  h3.zone{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:22px 0 10px}
+
+  /* Synthèse */
+  .synth{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--navy);padding:18px 22px;border-radius:4px}
+  .synth ul{margin:0;padding-left:18px}
+  .synth li{margin:6px 0}
+
+  .alert{margin-top:16px;background:var(--amber-soft);border:1px solid #f1d3a8;border-left:6px solid var(--amber);padding:14px 20px;border-radius:4px}
+  .alert strong{color:var(--amber)}
+  .alert ul{margin:8px 0 0;padding-left:18px}
+
+  /* Fiches */
+  .item{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 20px;margin-bottom:12px}
+  .item h4{margin:0 0 4px;font-size:1.08rem;line-height:1.3}
+  .item .when{color:var(--muted);font-size:.88rem;margin-bottom:8px}
+  .item p{margin:6px 0}
+  .item .cdc{margin-top:10px;padding:8px 12px;background:var(--blue-soft);border-radius:3px;font-size:.95rem}
+  .item .cdc b{color:var(--blue)}
+  .item .src{margin-top:8px;font-size:.85rem;color:var(--muted)}
+  .item .src a{margin-right:10px}
+
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+  .tag{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;border-radius:3px;border:1px solid transparent}
+  .p-haute{background:var(--red-soft);color:var(--red);border-color:#f2c3cb}
+  .p-moy{background:var(--amber-soft);color:var(--amber);border-color:#f1d3a8}
+  .p-info{background:#eef0f4;color:var(--muted);border-color:var(--line)}
+  .n-applicable{background:var(--green-soft);color:var(--green)}
+  .n-projet{background:var(--blue-soft);color:var(--blue)}
+  .n-verif{background:#fff;color:var(--amber);border-color:#f1d3a8}
+  .n-presse{background:#fff;color:var(--muted);border-color:var(--line)}
+
+  /* Monde compact */
+  .brief{display:grid;grid-template-columns:150px 1fr;gap:4px 16px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 20px;margin-bottom:10px}
+  .brief .pays{font-weight:800;color:var(--navy)}
+  .brief .pays small{display:block;font-weight:400;color:var(--muted)}
+  .brief p{margin:0}
+  .brief .src{grid-column:2;font-size:.85rem;color:var(--muted)}
+
+  .watch li{margin:8px 0}
+  .limits{font-size:.95rem;color:var(--muted)}
+  .limits ul{padding-left:18px}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  footer .in{max-width:1180px;margin:0 auto;padding:18px 24px 40px}
+
+  @media (max-width:860px){
+    .wrap{grid-template-columns:1fr;gap:10px}
+    nav.toc{position:static;display:flex;flex-wrap:wrap;gap:6px}
+    nav.toc p{width:100%}
+    nav.toc a{border:1px solid var(--line);border-radius:3px;background:#fff;padding:4px 8px}
+    h1{font-size:1.9rem}
+    .brief{grid-template-columns:1fr}
+    .brief .src{grid-column:1}
+  }
+  @media print{
+    nav.toc{display:none} .wrap{grid-template-columns:1fr}
+    header.mast{background:#fff;color:var(--ink)} .sub,.meta,.kicker{color:var(--ink)}
+    .item,.brief{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="kicker"><span class="dot"></span>Veille hebdomadaire · Sécurité civile</div>
+    <h1>BRH Florent</h1>
+    <p class="sub">Bulletin de renseignements hebdomadaire à l'usage du chef de centre — CIS Castelnau-de-Médoc · Sainte-Hélène · Salaunes</p>
+    <div class="meta">
+      <span class="test">N° 1</span>
+      <span>Période : <b>9 au 15 novembre 2026</b></span>
+      <span>Rédigé le : <b>lundi 16 novembre 2026</b></span>
+      <span>Lecture : <b>≈ 10 min</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc" aria-label="Sommaire">
+    <p>Sommaire</p>
+    <a href="#synthese">Synthèse</a>
+    <a href="#actu">1 · Actualité</a>
+    <a href="#juridique">2 · Juridique &amp; Parlement</a>
+    <a href="#rh">3 · RH &amp; dialogue social</a>
+    <a href="#doctrine">4 · Doctrine &amp; formation</a>
+    <a href="#surveiller">5 · À surveiller</a>
+    <a href="#sources">6 · Sources &amp; limites</a>
+  </nav>
+
+  <main>
+
+    <!-- SYNTHÈSE -->
+    <section id="synthese">
+      <h2><span class="n">00</span>Synthèse de la semaine</h2>
+      <div class="synth">
+        <ul>
+          <li><b>Inondations éclair dans l'Hérault et le Gard</b> (nuit du 14 au 15 novembre) : 190 mm à Montpellier, dont plus de 150 mm en trois heures. Une centaine de personnes ont été mises en sécurité, pour la plupart bloquées dans leur véhicule.</li>
+          <li><b>Dialogue social</b> : le rendez-vous prévu le 12 novembre entre la CGT des SDIS et le ministre de l'Intérieur n'a pas eu lieu. Le syndicat appelle à déposer les casques devant les préfectures le 4 décembre, date de fin du préavis national.</li>
+          <li><b>Europe</b> : le 12 novembre, le Parlement européen a adopté sa position sur le mécanisme de protection civile 2028-2034. Il propose 12,42 Md€, une flotte aérienne de lutte contre les feux de forêt et un statut pour les volontaires.</li>
+          <li><b>Finances des SDIS</b> : deux signaux cette semaine, l'un sur la fragilité budgétaire du SDIS du Calvados (presse), l'autre sur la hausse des cotisations CNRACL évoquée au Sénat lors du débat sur le PLFSS 2027. Les deux sont à vérifier.</li>
+          <li><b>International</b> : une semaine calme. On relève des orages de grêle et des tornades en Argentine, sans victime signalée.</li>
+        </ul>
+      </div>
+      <div class="alert">
+        <strong>Actions sous 30 jours</strong> — aucune mise en conformité réglementaire n'a été identifiée. Attention : les sommaires du Journal officiel de la semaine n'ont pas pu être consultés (voir 06). Deux points méritent votre attention :
+        <ul>
+          <li>4 décembre (fin du préavis national et dépôt des casques annoncé) : vérifiez que les consignes du SDIS sur la continuité de service sont connues de vos adjoints.</li>
+          <li>Parcourez les sommaires du JO du 10 au 15 novembre sur Légifrance pour vous assurer qu'aucun texte ne vous a échappé.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ACTUALITÉ -->
+    <section id="actu">
+      <h2><span class="n">01</span>Actualité sécurité civile</h2>
+
+      <h3 class="zone">France</h3>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-moy">Priorité moyenne</span><span class="tag n-presse">Veille spécialisée</span></div>
+        <h4>Hérault et Gard : inondations éclair et record de pluie à Montpellier</h4>
+        <div class="when">Nuit du 14 au 15 novembre 2026</div>
+        <p>L'aéroport de Montpellier a relevé 190 mm, dont 153 mm en trois heures, un record pour un mois de novembre. L'est de l'Hérault, du chef-lieu au littoral (Pérols, La Grande-Motte, Le Grau-du-Roi), et l'ouest du Gard ont été touchés. On compte environ 105 mises en sécurité, surtout d'automobilistes piégés sur des routes submergées. Un hélicoptère de la Sécurité civile et une cellule drone ont été engagés. Aucune victime n'est signalée à ce stade.</p>
+        <div class="cdc"><b>Pour le chef de centre :</b> ce scénario de véhicules piégés sur une voirie inondée est transposable aux crues rapides de la Jalle et des zones basses du Médoc. C'est l'occasion de revoir avec les équipes la conduite à tenir pour une reconnaissance en zone inondée et les limites d'engagement des VSAV et FPT sur une chaussée submergée.</div>
+        <div class="src">Sources : <a href="https://www.catnat.net/veille-catastrophes-naturelles/veille-des-catastrophes-naturelles/archive-des-catastrophes/218-inondations-monde/38546-inondations-consecutives-a-de-fortes-pluies-dans-lherault-et-le-gard">CatNat</a><a href="https://franceinfo.fr/environnement/evenements-meteorologiques-extremes/herault-3-mois-de-pluie-en-24-heures-et-une-centaine-de-personnes-secourues-apres-des-inondations-pres-de-montpellier_8283869.html">franceinfo</a> · <span class="tag n-verif">Article franceinfo : titre seul</span></div>
+      </article>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-info">Mise à jour</span><span class="tag n-verif">À vérifier</span></div>
+        <h4>Tempête Charles : un passage modéré sur le sud de la France</h4>
+        <div class="when">Jeudi 12 novembre 2026</div>
+        <p><b>Ce qui a changé depuis le n° 0 :</b> les prévisions publiées le 10 novembre annonçaient une dépression en comblement sur l'Occitanie, avec de fortes pluies, des orages en Provence et sur la Côte d'Azur, mais sans tempête ni vigilance vent en plaine. CatNat a ensuite étendu sa fiche au Maroc et à l'Algérie. Je n'ai pas pu lire de bilan pour la France.</p>
+        <div class="src">Sources : <a href="https://www.meteo-paris.com/actualites/tempete-charles-des-rafales-a-plus-de-150-km-h-pourraient-frapper-le-sud-de-la-france">Météo Paris (prévision du 10 nov.)</a><a href="https://www.catnat.net/veille-catastrophes-naturelles/veille-des-catastrophes-naturelles/archive-des-catastrophes/224-tempetes-monde/38537-la-tempete-charles-touche-madeire-la-peninsule-iberique-la-france-litalie-le-maroc-et-lalgerie">CatNat (titre seul)</a></div>
+      </article>
+
+      <p class="limits">Gironde et Nouvelle-Aquitaine : la recherche dédiée n'a fait remonter aucune information significative pour la semaine. Le site du SDIS 33 et les communiqués de la préfecture n'ont pas pu être consultés.</p>
+
+      <h3 class="zone">Europe</h3>
+
+      <div class="brief">
+        <div class="pays">Ukraine<small>9 – 10 novembre</small></div>
+        <p>La Commission européenne prépare avec Kyiv une aide d'urgence par le mécanisme de protection civile de l'UE, pour maintenir l'électricité, les hôpitaux et les services essentiels cet hiver. Une évaluation détaillée des besoins doit précéder les livraisons.</p>
+        <div class="src"><a href="https://www.eurointegration.com.ua/eng/news/2026/11/10/7249684/">European Pravda</a></div>
+      </div>
+      <div class="brief">
+        <div class="pays">Bulgarie<small>mi-novembre</small></div>
+        <p>CatNat signale une tempête dans l'ouest du pays. Je n'ai vu que le titre : ni la date exacte ni le bilan ne sont connus.</p>
+        <div class="src"><a href="https://www.catnat.net/veille-catastrophes-naturelles/veille-des-catastrophes-naturelles/archive-des-catastrophes/224-tempetes-monde/38548-louest-de-la-bulgarie-touche-par-une-tempete">CatNat</a> · <span class="tag n-verif">À vérifier</span></div>
+      </div>
+
+      <h3 class="zone">Monde</h3>
+
+      <div class="brief">
+        <div class="pays">Argentine<small>13 – 14 novembre</small></div>
+        <p>Violents orages de grêle, avec des grêlons proches de 10 cm, et une tornade dans les provinces de Córdoba, Santa Fe et Buenos Aires. Les dégâts sont importants : un moulin à riz détruit, un auvent de station-service effondré sur des véhicules, une école agricole dévastée à Germania. Environ 130 élèves ont été relogés et aucune victime n'est signalée.</p>
+        <div class="src"><a href="https://www.catnat.net/veille-catastrophes-naturelles/veille-des-catastrophes-naturelles/archive-des-catastrophes/226-grele-monde/38547-violents-orages-de-grele-et-tornades-dans-le-nord-de-largentine">CatNat</a></div>
+      </div>
+      <div class="brief">
+        <div class="pays">États-Unis<small>12 – 13 novembre</small></div>
+        <p>Petites tornades et orages dans le New Jersey (comté de Burlington) et le Delaware : arbres et poteaux électriques abattus, dégâts matériels limités, aucune victime signalée.</p>
+        <div class="src"><a href="https://www.catnat.net/veille-catastrophes-naturelles/veille-des-catastrophes-naturelles/archive-des-catastrophes/227-tornades-et-trombes-monde/38545-tornades-et-orages-dans-le-new-jersey-et-le-delaware-usa">CatNat</a></div>
+      </div>
+    </section>
+
+    <!-- JURIDIQUE -->
+    <section id="juridique">
+      <h2><span class="n">02</span>Veille juridique &amp; parlementaire</h2>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-moy">Priorité moyenne</span><span class="tag n-projet">Projet de règlement UE</span></div>
+        <h4>2.1 · Mécanisme de protection civile de l'Union 2028-2034 : le Parlement européen arrête sa position</h4>
+        <div class="when">Vote en plénière le jeudi 12 novembre 2026 (424 pour, 105 contre, 83 abstentions)</div>
+        <p>Le Parlement porte l'enveloppe à 12,42 Md€ en prix courants, soit 1,74 Md€ de plus que la proposition de la Commission. Il la répartit à 40 % pour la protection civile, 40 % pour les urgences sanitaires et 20 % pour la flexibilité. Le texte prévoit une flotte aérienne européenne de lutte contre les feux de forêt à partir de 2028 (rescEU), une cartographie des vulnérabilités, un renforcement de l'anticipation et un statut juridique pour les volontaires. Les négociations avec le Conseil vont maintenant s'ouvrir.</p>
+        <div class="cdc"><b>Pour le chef de centre :</b> deux points concernent directement les SDIS du massif landais : la flotte aérienne FDF et le statut européen des volontaires, à rapprocher du débat sur la qualification des SPV comme travailleurs. Le texte n'est pas encore applicable.</div>
+        <div class="src">Sources : <a href="https://news.europawire.eu/european-parliament-backs-e12-42-billion-eu-civil-protection-mechanism-with-stronger-crisis-preparedness/eu-press-release/2026/11/12/15/41/06/187345/">Communiqué du Parlement européen (reproduit par EuropaWire)</a><a href="https://www.eunews.it/en/2026/11/12/the-european-parliament-wants-more-funding-for-eu-civil-protection/">Eunews</a></div>
+      </article>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-info">Information</span><span class="tag n-verif">À vérifier</span></div>
+        <h4>2.2 · PLFSS 2027 au Sénat : les SDIS cités sur la hausse des cotisations CNRACL</h4>
+        <div class="when">Séance du lundi 9 novembre 2026, discussion générale</div>
+        <p>Une sénatrice a cité les SDIS parmi les employeurs publics dont la cotisation CNRACL augmente de trois points par an jusqu'en 2028. Aucun chiffrage propre aux SDIS n'a été donné. Je n'ai lu ce passage que sous forme résumée, sans le texte intégral du compte rendu.</p>
+        <div class="src">Source : <a href="https://www.senat.fr/cra/s20261109/s20261109.pdf">Sénat — compte rendu analytique du 9 novembre</a></div>
+      </article>
+
+      <p class="limits">Pas d'évolution repérée cette semaine sur la PPL réserve communale, le programme 161 en séance, le projet de loi de modernisation de la sécurité civile ou la jurisprudence du Conseil d'État. Les sommaires du JO n'ont pas pu être lus (voir 06).</p>
+    </section>
+
+    <!-- RH -->
+    <section id="rh">
+      <h2><span class="n">03</span>RH, dialogue social &amp; volontariat</h2>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-moy">Priorité moyenne</span><span class="tag n-presse">Syndicat</span></div>
+        <h4>Rendez-vous manqué place Beauvau et appel au dépôt des casques le 4 décembre</h4>
+        <div class="when">Jeudi 12 novembre 2026</div>
+        <p>Une délégation de la CGT des SDIS s'est rendue au ministère pour une rencontre avec le ministre, déjà reportée plusieurs fois. Selon le syndicat, elle n'a pas eu lieu. La CGT affirme que l'enveloppe du « pacte capacitaire » serait passée de 200 à 150 M€. Elle demande la publication de la note de la tutelle attendue après l'arrêt du Conseil d'État du 9 juillet 2026 sur les SPV. Elle évoque aussi un projet de loi « MOSC 2 », qui ne financerait pas les lauréats du concours 2023. Le syndicat appelle à déposer les casques devant les préfectures le 4 décembre.</p>
+        <div class="cdc"><b>Pour le chef de centre :</b> c'est une source syndicale et ses chiffres ne sont pas vérifiés. Le 4 décembre est une date à anticiper : risque de mobilisation devant la préfecture de la Gironde le dernier jour du préavis.</div>
+        <div class="src">Source : <a href="https://www.cgtdessdis.com/beauvau-12-novembre-2026/">CGT des SDIS</a></div>
+      </article>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-info">Information</span><span class="tag n-verif">Titres seuls</span></div>
+        <h4>Signaux locaux : Deux-Sèvres et Calvados</h4>
+        <div class="when">Semaine du 9 novembre</div>
+        <p>Deux-Sèvres : des sapeurs-pompiers prévoient de manifester et de déposer leurs casques devant la préfecture. Calvados : un rapport juge que l'équilibre financier du SDIS ne serait plus garanti dès 2027. Je n'ai pas pu lire ces deux articles au-delà du titre.</p>
+        <div class="src">Sources : <a href="https://www.ouest-france.fr/societe/pompiers/des-sapeurs-pompiers-vont-manifester-et-deposer-leurs-casques-devant-la-prefecture-des-deux-sevres-e1ab287e-e115-11f1-b029-43a761592972">Ouest-France (Deux-Sèvres)</a><a href="https://ouest-france.fr/societe/pompiers/lequilibre-nest-plus-garanti-des-2027-un-rapport-pointe-la-fragilite-financiere-des-sapeurs-pompiers-du-calvados-159f76f2-deb0-11f1-86b6-0a2fbb1d8ed9">Ouest-France (Calvados)</a></div>
+      </article>
+    </section>
+
+    <!-- DOCTRINE -->
+    <section id="doctrine">
+      <h2><span class="n">04</span>Doctrine, formation &amp; RETEX</h2>
+
+      <article class="item">
+        <div class="tags"><span class="tag p-info">Information</span><span class="tag n-presse">RETEX à suivre</span></div>
+        <h4>Inondations de Montpellier : drone et hélicoptère pour les sauvetages en véhicule</h4>
+        <div class="when">14 – 15 novembre 2026</div>
+        <p>Une cellule drone et un hélicoptère de la Sécurité civile ont été engagés en appui des mises en sécurité. Aucun RETEX officiel n'est encore publié. Ce sera à guetter, notamment sur l'usage du drone pour repérer les véhicules immergés de nuit.</p>
+        <div class="src">Source : <a href="https://www.catnat.net/veille-catastrophes-naturelles/veille-des-catastrophes-naturelles/archive-des-catastrophes/218-inondations-monde/38546-inondations-consecutives-a-de-fortes-pluies-dans-lherault-et-le-gard">CatNat</a></div>
+      </article>
+
+      <p class="limits">Domaines sans évolution significative repérée cette semaine : SSUAP, incendie et FDF, secours routier, NRBC, risques technologiques, GOC, transmissions, NexSIS, publications ENSOSP et HAS/INRS.</p>
+    </section>
+
+    <!-- À SURVEILLER -->
+    <section id="surveiller">
+      <h2><span class="n">05</span>Points à surveiller</h2>
+      <ul class="watch">
+        <li><b>Fin du préavis national et dépôt des casques</b> — 4 décembre. La CGT appelle à des rassemblements devant les préfectures.</li>
+        <li><b>Mécanisme de protection civile de l'UE 2028-2034</b> — négociations entre le Parlement et le Conseil (nouveau).</li>
+        <li><b>Note de la tutelle après l'arrêt du Conseil d'État du 9 juillet 2026 sur les SPV</b> — publication réclamée par les syndicats (nouveau).</li>
+        <li><b>Projet de loi de modernisation de la sécurité civile</b> — toujours pas déposé à ma connaissance. La CGT évoque un texte « MOSC 2 » (à confirmer).</li>
+        <li><b>Réserve communale</b> — deuxième lecture à l'Assemblée ou CMP. Pas d'évolution repérée.</li>
+        <li><b>PLF 2027, programme 161</b> — date de l'examen en séance au Sénat non confirmée.</li>
+        <li><b>Décret n° 2026-1026 (maladies professionnelles)</b> — on ne sait toujours pas quels tableaux sont modifiés : texte non lu.</li>
+        <li><b>Hérault et Gard</b> — bilan consolidé et éventuelle reconnaissance de l'état de catastrophe naturelle (nouveau).</li>
+        <li><i>Clos :</i> tempête Charles (passage modéré en France, sans bilan notable repéré) ; Brooklyn (aucun bilan définitif retrouvé).</li>
+      </ul>
+    </section>
+
+    <!-- SOURCES -->
+    <section id="sources">
+      <h2><span class="n">06</span>Sources &amp; limites</h2>
+      <div class="limits">
+        <ul>
+          <li><b>Lacune importante :</b> Légifrance, c'est-à-dire les sommaires du JO du 10 au 15 novembre et le décret n° 2026-1026, n'a pas pu être consulté cette semaine. La veille réglementaire est donc incomplète.</li>
+          <li>Les dossiers législatifs du Sénat, le site du SDIS 33, la préfecture de la Gironde, La Gazette des communes et Ouest-France étaient inaccessibles. Les deux articles Ouest-France et l'article franceinfo ne sont cités que par leur titre.</li>
+          <li>Les données CatNat sont des relevés de veille et non des bilans officiels. Les chiffres syndicaux (CGT) n'ont pas été vérifiés.</li>
+          <li>Sources principales : Parlement européen, Sénat, CatNat, Météo Paris, CGT des SDIS, presse européenne et régionale.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="in"><a href="../archives.html">Éditions précédentes</a> · BRH Florent — document de veille personnel, sans caractère officiel. Il ne remplace pas la consultation des sources citées.</div>
+</footer>
+
+</body>
+</html>
